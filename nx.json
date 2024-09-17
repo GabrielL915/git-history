@@ -4,11 +4,23 @@
   "defaultBase": "master",
   "nxCloudId": "66e9d7284c1fab08ef204943",
   "namedInputs": {
-    "sharedGlobals": [
-      "{workspaceRoot}/.github/workflows/ci.yml"
-    ],
-    "default": [
-      "sharedGlobals"
-    ]
-  }
+    "sharedGlobals": ["{workspaceRoot}/.github/workflows/ci.yml"],
+    "default": ["sharedGlobals"]
+  },
+  "plugins": [
+    {
+      "plugin": "@nx/webpack/plugin",
+      "options": {
+        "buildTargetName": "build",
+        "serveTargetName": "serve",
+        "previewTargetName": "preview"
+      }
+    },
+    {
+      "plugin": "@nx/eslint/plugin",
+      "options": {
+        "targetName": "lint"
+      }
+    }
+  ]
 }
