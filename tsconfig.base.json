@@ -16,7 +16,8 @@
     "baseUrl": ".",
     "paths": {
       "api": ["packages/github-api/api/src/index.ts"],
-      "github-api-resource": ["packages/github-api/resource/src/index.ts"]
+      "github-api-resource": ["packages/github-api/resource/src/index.ts"],
+      "history-domain": ["packages/github-api/domain/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

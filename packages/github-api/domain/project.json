@@ -1,0 +1,19 @@
+{
+  "name": "history-domain",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/github-api/domain/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/packages/github-api/domain",
+        "main": "packages/github-api/domain/src/index.ts",
+        "tsConfig": "packages/github-api/domain/tsconfig.lib.json",
+        "assets": []
+      }
+    }
+  }
+}
