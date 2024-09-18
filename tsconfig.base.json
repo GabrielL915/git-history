@@ -15,7 +15,8 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "api": ["packages/github-api/api/src/index.ts"]
+      "api": ["packages/github-api/api/src/index.ts"],
+      "github-api-resource": ["packages/github-api/resource/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
