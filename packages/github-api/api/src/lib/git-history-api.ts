@@ -1,56 +1,72 @@
-export function gitHistoryApi(
+export async function gitHistoryApi(
   token: string,
   owner: string,
   repository: string
 ) {
-  fetch(`https://api.github.com/repos/${owner}/${repository}/commits`, {
-    headers: {
-      Authorization: `token ${token}`,
-    },
-  })
-    .then((response) => {
-      if (!response.ok) {
-        throw new Error('Error search commits: ' + response.statusText);
+  try {
+    const response = await fetch(
+      `https://api.github.com/repos/${owner}/${repository}/commits`,
+      {
+        headers: {
+          Authorization: `token ${token}`,
+        },
       }
-      return response.json();
-    })
-    .then((commits) => {
-      commits.forEach((commit: any) => {
+    );
+
+    if (!response.ok) {
+      throw new Error('Error searching commits: ' + response.statusText);
+    }
+
+    const commits = await response.json();
+    const commitInfos = await Promise.all(
+      commits.map(async (commit: any) => {
         const commitSha = commit.sha;
-        getCommitInfo(token, owner, repository, commitSha);
-      });
-    });
+        return await getCommitInfo(token, owner, repository, commitSha);
+      })
+    );
+
+    return commitInfos;
+  } catch (error) {
+    console.error(error);
+    throw error;
+  }
 }
-function getCommitInfo(
+
+async function getCommitInfo(
   token: string,
   owner: string,
   repository: string,
   commitSha: string
 ) {
-  fetch(
-    `https://api.github.com/repos/${owner}/${repository}/commits/${commitSha}`,
-    {
-      headers: {
-        Authorization: `token ${token}`,
-      },
-    }
-  )
-    .then((response) => {
-      if (!response.ok) {
-        throw new Error('Error search commit: ' + response.statusText);
+  try {
+    const response = await fetch(
+      `https://api.github.com/repos/${owner}/${repository}/commits/${commitSha}`,
+      {
+        headers: {
+          Authorization: `token ${token}`,
+        },
       }
-      return response.json();
-    })
-    .then((commit) => {
-      console.log(commit.commit.author.name);
-      const files = commit.files;
-      files.forEach((file: any) => {
-        console.log(file.filename);
-        console.log(commit.commit.message);
-        console.log(file.raw_url);
-      });
-    })
-    .catch((error) => {
-      console.error(error);
-    });
+    );
+
+    if (!response.ok) {
+      throw new Error('Error searching commit: ' + response.statusText);
+    }
+
+    const commit = await response.json();
+    const author = commit.commit.author.name;
+    const message = commit.commit.message;
+    const files = commit.files.map((file: any) => ({
+      filename: file.filename,
+      raw_url: file.raw_url,
+    }));
+
+    return {
+      author,
+      message,
+      files,
+    };
+  } catch (error) {
+    console.error(error);
+    throw error;
+  }
 }

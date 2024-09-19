@@ -1,1 +1,1 @@
-export * from './lib/history-domain';
+export * from './lib/service/git-history.service';

@@ -1,10 +1,10 @@
 import { Module } from '@nestjs/common';
-import { HistoryDomain } from 'github-history-domain';
 import { HistoryController } from './history.controller';
+import { GitHistoryService } from 'github-history-domain';
 
 @Module({
   controllers: [HistoryController],
-  providers: [HistoryDomain],
+  providers: [GitHistoryService],
   exports: [],
 })
 export class GithubApiResourceModule {}
