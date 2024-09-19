@@ -14,6 +14,6 @@ export class HistoryController {
 
   @Get()
   async create() {
-    return this.historyDomain.getHistoryCommitInfo('GabrielL916', 'auth-api');
+    return this.historyDomain.getHistoryCommitInfo('GabrielL915', 'auth-api');
   }
 }

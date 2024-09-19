@@ -1,0 +1,19 @@
+{
+  "name": "git-history-api",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/github-api/api/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/packages/github-api/api",
+        "main": "packages/github-api/api/src/index.ts",
+        "tsConfig": "packages/github-api/api/tsconfig.lib.json",
+        "assets": []
+      }
+    }
+  }
+}
