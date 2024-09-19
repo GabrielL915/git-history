@@ -1,2 +1,2 @@
-export * from './lib/github-api-resource.controller';
-export * from './lib/github-api-resource.module';
+export * from './lib/history.controller';
+export * from './lib/github-history-resource.module';

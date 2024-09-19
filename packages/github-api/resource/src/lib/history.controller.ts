@@ -5,10 +5,15 @@ import {
   Body,
   Param,
 } from '@nestjs/common';
+import { HistoryDomain } from 'github-history-domain';
 
+@Controller('history')
 export class HistoryController {
+
+  constructor(private historyDomain: HistoryDomain) {}
+
   @Get()
-  async findAll() {
-    return [];
+  async create() {
+    return this.historyDomain.getHistoryCommitInfo('GabrielL916', 'auth-api');
   }
 }

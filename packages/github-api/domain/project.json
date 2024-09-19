@@ -1,5 +1,5 @@
 {
-  "name": "history-domain",
+  "name": "github-history-domain",
   "$schema": "../../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "packages/github-api/domain/src",
   "projectType": "library",
