@@ -1,0 +1,9 @@
+{
+  "name": "github-history-resource",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/github-api/resource/src",
+  "projectType": "library",
+  "tags": [],
+  "// targets": "to see all targets run: nx show project github-history-resource --web",
+  "targets": {}
+}
