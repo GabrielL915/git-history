@@ -1,19 +1,22 @@
 import {
   Controller,
-  Get,
   Post,
   Body,
-  Param,
+  HttpCode,
+  HttpStatus,
+  ValidationPipe,
 } from '@nestjs/common';
-import { GitHistoryService } from 'github-history-domain';
+import { ApiInfoDto, GitHistoryService } from 'github-history-domain';
 
 @Controller('history')
 export class HistoryController {
-
   constructor(private gitHistoryService: GitHistoryService) {}
 
-  @Get()
-  async create() {
-    return this.gitHistoryService.getHistoryCommitInfo('GabrielL915', 'auth-api');
+  @Post()
+  @HttpCode(HttpStatus.OK)
+  async getCommitHistory(
+    @Body(new ValidationPipe({ transform: true })) apiInfoDto: ApiInfoDto
+  ) {
+    return this.gitHistoryService.getHistoryCommitInfo(apiInfoDto);
   }
 }
