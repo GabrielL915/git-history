@@ -7,7 +7,7 @@ export class ServiceUnavailableException extends StandardException {
   }
   
   getDefaultMessage() {
-    return 'Network error or CORS issue';
+    return 'Service unavailable';
   }
   getDefaultMessageKey() {
     return 'SERVICE_UNAVAILABLE';
