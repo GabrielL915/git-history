@@ -16,6 +16,9 @@
     "baseUrl": ".",
     "paths": {
       "git-history-api": ["packages/github-api/api/src/index.ts"],
+      "github-history-data-source": [
+        "packages/github-api/data-source/src/index.ts"
+      ],
       "github-history-domain": ["packages/github-api/domain/src/index.ts"],
       "github-history-resource": ["packages/github-api/resource/src/index.ts"],
       "history-feature-presentation": [
