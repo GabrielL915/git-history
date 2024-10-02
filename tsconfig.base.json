@@ -18,6 +18,9 @@
       "git-history-api": ["packages/github-api/api/src/index.ts"],
       "github-history-domain": ["packages/github-api/domain/src/index.ts"],
       "github-history-resource": ["packages/github-api/resource/src/index.ts"],
+      "history-feature-presentation": [
+        "packages/github-api/feature-presentations/src/index.ts"
+      ],
       "shared-interfaces": ["packages/shared/interfaces/src/index.ts"],
       "shared-utils": ["packages/shared/utils/src/index.ts"]
     }
